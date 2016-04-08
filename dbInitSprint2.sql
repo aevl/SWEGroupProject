@@ -69,8 +69,8 @@ CREATE TABLE IF NOT EXISTS `Message` (
   `*msgLd_num` INT NOT NULL,
   `SendTimeStamp` VARCHAR(45) NULL,
   `Sender Ld_num` VARCHAR(45) NULL,
-  `Reciever Ld_num` VARCHAR(45) NULL,
-  `Reciever TimeStamp` VARCHAR(45) NULL,
+  `Receiver Ld_num` VARCHAR(45) NULL,
+  `Receiver TimeStamp` VARCHAR(45) NULL,
   `contents` VARCHAR(45) NULL,
   PRIMARY KEY (`*msgLd_num`))
 ENGINE = InnoDB;
