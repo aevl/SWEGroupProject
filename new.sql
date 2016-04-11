@@ -63,15 +63,15 @@ SHOW WARNINGS;
 -- -----------------------------------------------------
 -- Table `message`
 -- -----------------------------------------------------
+
 DROP TABLE IF EXISTS `message` ;
 
 SHOW WARNINGS;
 CREATE TABLE IF NOT EXISTS `message` (
   `id` INT NOT NULL,
-  `SendTimeStamp` VARCHAR(45) NULL,
-  `Sender Ld_num` VARCHAR(45) NULL,
-  `Reciever Ld_num` VARCHAR(45) NULL,
-  `Reciever TimeStamp` VARCHAR(45) NULL,
+  `send_time_stamp` DATETIME NULL,
+  `sender_id` VARCHAR(45) NULL,
+  `receiver_id` VARCHAR(45) NULL,
   `contents` VARCHAR(45) NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
