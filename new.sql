@@ -20,34 +20,35 @@ SHOW WARNINGS;
 USE `mydb` ;
 
 -- -----------------------------------------------------
--- Table `User`
+-- Table `user`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `User` ;
+DROP TABLE IF EXISTS `user` ;
 
 SHOW WARNINGS;
-CREATE TABLE IF NOT EXISTS `User` (
+CREATE TABLE IF NOT EXISTS `user` (
   `first_name` VARCHAR(255) NULL,
   `last_name` VARCHAR(45) NULL,
-  `email` VARCHAR(45) NULL,
+  `email` VARCHAR(45) NOT NULL,
   `password` VARCHAR(45) NULL,
   `bio` VARCHAR(45) NULL,
   `picture` VARCHAR(45) NULL,
   `location` VARCHAR(45) NULL,
   `industry` VARCHAR(45) NULL,
-  `LD_num` VARCHAR(25) NOT NULL,
-  PRIMARY KEY (`LD_num`))
+  `id` INT NOT NULL,
+  PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
 SHOW WARNINGS;
 
 -- -----------------------------------------------------
--- Table `Business`
+-- Table `business`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `Business` ;
+DROP TABLE IF EXISTS `business` ;
 
 SHOW WARNINGS;
-CREATE TABLE IF NOT EXISTS `Business` (
-  `company_name` VARCHAR(45) NOT NULL,
+CREATE TABLE IF NOT EXISTS `business` (
+  `id` INT NOT NULL,
+  `company_name` VARCHAR(45) NULL,
   `industry` VARCHAR(45) NULL,
   `email` VARCHAR(45) NULL,
   `password` VARCHAR(45) NULL,
@@ -60,41 +61,41 @@ ENGINE = InnoDB;
 SHOW WARNINGS;
 
 -- -----------------------------------------------------
--- Table `Message`
+-- Table `message`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `Message` ;
+DROP TABLE IF EXISTS `message` ;
 
 SHOW WARNINGS;
-CREATE TABLE IF NOT EXISTS `Message` (
-  `*msgLd_num` INT NOT NULL,
+CREATE TABLE IF NOT EXISTS `message` (
+  `id` INT NOT NULL,
   `SendTimeStamp` VARCHAR(45) NULL,
   `Sender Ld_num` VARCHAR(45) NULL,
   `Reciever Ld_num` VARCHAR(45) NULL,
   `Reciever TimeStamp` VARCHAR(45) NULL,
   `contents` VARCHAR(45) NULL,
-  PRIMARY KEY (`*msgLd_num`))
+  PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
 SHOW WARNINGS;
 
 -- -----------------------------------------------------
--- Table `Experience`
+-- Table `experience`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `Experience` ;
+DROP TABLE IF EXISTS `experience` ;
 
 SHOW WARNINGS;
-CREATE TABLE IF NOT EXISTS `Experience` (
-  `id` VARCHAR(45) NOT NULL,
-  `data_start` DATETIME NULL,
-  `data_end` DATETIME NULL,
+CREATE TABLE IF NOT EXISTS `experience` (
+  `id` INT NOT NULL,
+  `date_start` DATETIME NULL,
+  `date_end` DATETIME NULL,
   `title` VARCHAR(45) NULL,
   `company` VARCHAR(45) NULL,
   `description` VARCHAR(45) NULL,
-  `User_email` VARCHAR(45) NOT NULL,
+  `user_email` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id`),
-  CONSTRAINT `fk_Experience_User1`
-    FOREIGN KEY (`User_email`)
-    REFERENCES `User` (`email`)
+  CONSTRAINT `fk_experience_user1`
+    FOREIGN KEY (`user_email`)
+    REFERENCES `user` (`email`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -102,21 +103,21 @@ ENGINE = InnoDB;
 SHOW WARNINGS;
 
 -- -----------------------------------------------------
--- Table `Publication`
+-- Table `publication`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `Publication` ;
+DROP TABLE IF EXISTS `publication` ;
 
 SHOW WARNINGS;
-CREATE TABLE IF NOT EXISTS `Publication` (
+CREATE TABLE IF NOT EXISTS `publication` (
   `title` VARCHAR(45) NOT NULL,
   `date` DATETIME NULL,
   `description` VARCHAR(45) NULL,
   `authors` VARCHAR(45) NOT NULL,
-  `User_email` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`title`, `authors`, `User_email`),
-  CONSTRAINT `fk_Publication_User1`
-    FOREIGN KEY (`User_email`)
-    REFERENCES `User` (`email`)
+  `user_email` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`title`, `authors`, `user_email`),
+  CONSTRAINT `fk_publication_user1`
+    FOREIGN KEY (`user_email`)
+    REFERENCES `user` (`email`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -124,21 +125,21 @@ ENGINE = InnoDB;
 SHOW WARNINGS;
 
 -- -----------------------------------------------------
--- Table `Education`
+-- Table `education`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `Education` ;
+DROP TABLE IF EXISTS `education` ;
 
 SHOW WARNINGS;
-CREATE TABLE IF NOT EXISTS `Education` (
+CREATE TABLE IF NOT EXISTS `education` (
   `type` VARCHAR(45) NOT NULL,
   `title` VARCHAR(45) NULL,
   `location` VARCHAR(45) NULL,
   `school` VARCHAR(45) NULL,
-  `User_email` VARCHAR(45) NOT NULL,
+  `user_email` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`type`),
-  CONSTRAINT `fk_Education_User1`
-    FOREIGN KEY (`User_email`)
-    REFERENCES `User` (`email`)
+  CONSTRAINT `fk_education_user1`
+    FOREIGN KEY (`user_email`)
+    REFERENCES `user` (`email`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -153,11 +154,11 @@ DROP TABLE IF EXISTS `skill` ;
 SHOW WARNINGS;
 CREATE TABLE IF NOT EXISTS `skill` (
   `name` VARCHAR(45) NOT NULL,
-  `User_email` VARCHAR(45) NOT NULL,
+  `user_email` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`name`),
-  CONSTRAINT `fk_skill_User1`
-    FOREIGN KEY (`User_email`)
-    REFERENCES `User` (`email`)
+  CONSTRAINT `fk_skill_user1`
+    FOREIGN KEY (`user_email`)
+    REFERENCES `user` (`email`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -165,18 +166,18 @@ ENGINE = InnoDB;
 SHOW WARNINGS;
 
 -- -----------------------------------------------------
--- Table `Language`
+-- Table `language`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `Language` ;
+DROP TABLE IF EXISTS `language` ;
 
 SHOW WARNINGS;
-CREATE TABLE IF NOT EXISTS `Language` (
+CREATE TABLE IF NOT EXISTS `language` (
   `name` VARCHAR(45) NOT NULL,
-  `User_email` VARCHAR(45) NOT NULL,
+  `user_email` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`name`),
-  CONSTRAINT `fk_Language_User1`
-    FOREIGN KEY (`User_email`)
-    REFERENCES `User` (`email`)
+  CONSTRAINT `fk_language_user1`
+    FOREIGN KEY (`user_email`)
+    REFERENCES `user` (`email`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -184,22 +185,22 @@ ENGINE = InnoDB;
 SHOW WARNINGS;
 
 -- -----------------------------------------------------
--- Table `Organization`
+-- Table `organization`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `Organization` ;
+DROP TABLE IF EXISTS `organization` ;
 
 SHOW WARNINGS;
-CREATE TABLE IF NOT EXISTS `Organization` (
-  `id` VARCHAR(45) NOT NULL,
+CREATE TABLE IF NOT EXISTS `organization` (
+  `id` INT NOT NULL,
   `name` VARCHAR(45) NULL,
   `title` VARCHAR(45) NULL,
   `date_start` DATETIME NULL,
-  `data_end` DATETIME NULL,
-  `User_email` VARCHAR(45) NOT NULL,
+  `date_end` DATETIME NULL,
+  `user_email` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id`),
-  CONSTRAINT `fk_Organization_User1`
-    FOREIGN KEY (`User_email`)
-    REFERENCES `User` (`email`)
+  CONSTRAINT `fk_organization_user1`
+    FOREIGN KEY (`user_email`)
+    REFERENCES `user` (`email`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -207,23 +208,23 @@ ENGINE = InnoDB;
 SHOW WARNINGS;
 
 -- -----------------------------------------------------
--- Table `Business_has_User`
+-- Table `business_has_user`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `Business_has_User` ;
+DROP TABLE IF EXISTS `business_has_user` ;
 
 SHOW WARNINGS;
-CREATE TABLE IF NOT EXISTS `Business_has_User` (
-  `Business_company_name` VARCHAR(45) NOT NULL,
-  `User_email` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`Business_company_name`, `User_email`),
-  CONSTRAINT `fk_Business_has_User_Business1`
-    FOREIGN KEY (`Business_company_name`)
-    REFERENCES `Business` (`company_name`)
+CREATE TABLE IF NOT EXISTS `business_has_user` (
+  `business_id` INT NOT NULL,
+  `user_email` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`Business_company_name`, `user_email`),
+  CONSTRAINT `fk_business_has_user_Business1`
+    FOREIGN KEY (`business_id`)
+    REFERENCES `business` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Business_has_User_User1`
-    FOREIGN KEY (`User_email`)
-    REFERENCES `User` (`email`)
+  CONSTRAINT `fk_business_has_user_user1`
+    FOREIGN KEY (`user_email`)
+    REFERENCES `user` (`email`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -231,23 +232,23 @@ ENGINE = InnoDB;
 SHOW WARNINGS;
 
 -- -----------------------------------------------------
--- Table `User_has_Message`
+-- Table `user_has_message`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `User_has_Message` ;
+DROP TABLE IF EXISTS `user_has_message` ;
 
 SHOW WARNINGS;
-CREATE TABLE IF NOT EXISTS `User_has_Message` (
-  `User_LD_num` VARCHAR(25) NOT NULL,
-  `Message_*msgLd_num` INT NOT NULL,
-  PRIMARY KEY (`User_LD_num`, `Message_*msgLd_num`),
-  CONSTRAINT `fk_User_has_Message_User1`
-    FOREIGN KEY (`User_LD_num`)
-    REFERENCES `User` (`LD_num`)
+CREATE TABLE IF NOT EXISTS `user_has_message` (
+  `user_id` VARCHAR(25) NOT NULL,
+  `message_id` INT NOT NULL,
+  PRIMARY KEY (`user_id`, `message_id`),
+  CONSTRAINT `fk_user_has_message_user1`
+    FOREIGN KEY (`user_id`)
+    REFERENCES `user` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_User_has_Message_Message1`
-    FOREIGN KEY (`Message_*msgLd_num`)
-    REFERENCES `Message` (`*msgLd_num`)
+  CONSTRAINT `fk_user_has_message_Message1`
+    FOREIGN KEY (`message_id`)
+    REFERENCES `message` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -257,3 +258,4 @@ SHOW WARNINGS;
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
