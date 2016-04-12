@@ -108,7 +108,7 @@ CREATE TABLE IF NOT EXISTS `publication` (
   `description` VARCHAR(45) NULL,
   `authors` VARCHAR(45) NOT NULL,
   `user_id` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`title`, `authors`, `user_email`),
+  PRIMARY KEY (`title`, `authors`, `user_id`),
   CONSTRAINT `fk_publication_user1`
     FOREIGN KEY (`user_id`)
     REFERENCES `user` (`id`)
