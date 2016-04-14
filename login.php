@@ -4,6 +4,10 @@
            $url = 'https://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
            header('Location: ' . $url);
 	}
+	if(!isset($_SESSION['email'])){
+		echo"You are not logged in, redirecting";
+		header('Location: http://pikachu-swacy.centralus.cloudapp.azure.com/login.php');
+	}
 ?>
 <html>
         <head>
@@ -42,7 +46,7 @@
                                         <h2>Login</h2>
                                         <form action="<?=$_SERVER['PHP_SELF']?>" method="POST">
                                                 <div class="row form-group">
-                                                                <input class='form-control' type="text" name="username" placeholder="Username">
+                                                                <input class='form-control' type="text" name="email" placeholder="E-mail">
                                                 </div>
                                                 <div class="row form-group">
                                                                 <input class='form-control' type="password" name="password" placeholder="Password">
@@ -61,14 +65,15 @@
     if(isset($_POST['submit'])) { // Was the form submitted?         
         $link = mysqli_connect("pikachu-swacy.centralus.cloudapp.azure.com", "general", "Thisistheultimatepassword1337", "mydb") or die ("Connection Error " . mysqli_error($link));
         $i = $_POST['email'];                      	
-        $sql = "SELECT  password, FROM user WHERE email ="." '".$i."' ;";       
+        $sql = "SELECT  password, id FROM user WHERE email ="." '".$i."' ";
         $stmt = mysqli_query($link, $sql);
         if ($result = mysqli_fetch_assoc($stmt)){
             $hashed = $result['password'];
+            $j = $result['id'];
         }
         if (password_verify($_POST['password'], $hashed)){
              echo 'Password is valid!'; 
-                $_SESSION['email'] = $i;
+                $_SESSION['id'] = $j;
                 header('Location: /user.php');
             }
         } else if(!empty($_POST['email'])) {
