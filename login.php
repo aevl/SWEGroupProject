@@ -74,6 +74,7 @@
         if (password_verify($_POST['password'], $hashed)){
              echo 'Password is valid!'; 
                 $_SESSION['id'] = $j;
+                $_SESSION['email'] = $i;
                 header('Location: /user.php');
             }
         } else if(!empty($_POST['email'])) {
