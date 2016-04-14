@@ -50,7 +50,7 @@ CREATE TABLE IF NOT EXISTS `business` (
   `contact_email` VARCHAR(45) NULL,
   `website` VARCHAR(45) NULL,
   `description` VARCHAR(45) NULL,
-  PRIMARY KEY (`company_name`))
+  PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
 SHOW WARNINGS;
@@ -211,7 +211,7 @@ CREATE TABLE IF NOT EXISTS `business_has_user` (
   `business_id` INT NOT NULL,
   `user_id` INT NOT NULL,
   PRIMARY KEY (`business_id`, `user_id`),
-  CONSTRAINT `fk_business_has_user_Business1`
+  CONSTRAINT `fk_business_has_user_business1`
     FOREIGN KEY (`business_id`)
     REFERENCES `business` (`id`)
     ON DELETE NO ACTION
