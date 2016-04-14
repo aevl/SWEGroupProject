@@ -1,6 +1,6 @@
 <?php
 	session_start();
-	if(!isset($_SESSION['email'])){
+	if(!isset($_SESSION['id'])){
 		echo"You are not logged in, redirecting";
 		header('Location: http://pikachu-swacy.centralus.cloudapp.azure.com/login.php');
 	}
@@ -10,8 +10,8 @@
            header('Location: ' . $url);
 	}
 	$link = mysqli_connect("pikachu-swacy.centralus.cloudapp.azure.com", "general", "Thisistheultimatepassword1337", "mydb") or die ("Connection Error " . mysqli_error($link));
-	$i = $_SESSION['email'];
-	$sql = "SELECT first_name, last_name, password, bio, picture, location, industry FROM User WHERE email = '$i'";        
+	$i = $_SESSION['id'];
+	$sql = "SELECT first_name, last_name, password, bio, picture, location, industry FROM user WHERE id = '$i'";        
 	$stmt = mysqli_query($link, $sql); 
 	$result= mysqli_fetch_assoc($stmt);
 
@@ -111,27 +111,27 @@
 
 
 <?php	
-		if(isset($_SESSION['email'])) { // Was the form submitted?
+		if(isset($_SESSION['id'])) { // Was the form submitted?
 				
                 $fname = $_POST['fname'];
-				$lname = $_POST['lname'];
+		$lname = $_POST['lname'];
                 $password = $_POST['password'];
                 $bio = $_POST['bio'];
-				$industry = $_POST['industry'];
+		$industry = $_POST['industry'];
                 $location = $_POST['location'];
 
                 $link = mysqli_connect("pikachu-swacy.centralus.cloudapp.azure.com", "general", "Thisistheultimatepassword1337", "mydb") or die ("Connection Error " . mysqli_error($link));
 				
-                $sql2 = "UPDATE User SET first_name =? WHERE email = ?";
-				$sql3 = "UPDATE User SET last_name =? WHERE email = ?";
-				$sql4 = "UPDATE User SET password =? WHERE email =?";
-				$sql5 = "UPDATE User SET bio =? WHERE email =?";
-                $sql6 = "UPDATE User SET industry =? WHERE email =?";
-                $sql7 = "UPDATE User SET location =? where email =?";
+                $sql2 = "UPDATE user SET first_name =? WHERE id = ?";
+		$sql3 = "UPDATE user SET last_name =? WHERE id = ?";
+		$sql4 = "UPDATE user SET password =? WHERE id =?";
+		$sql5 = "UPDATE user SET bio =? WHERE id =?";
+                $sql6 = "UPDATE user SET industry =? WHERE id =?";
+                $sql7 = "UPDATE user SET location =? where id =?";
                                                
 				if(isset($_POST['fname'])){
 					if ($stmt = mysqli_prepare($link, $sql2)) {
-						mysqli_stmt_bind_param($stmt, "ss",$fname,$email) or die("bind param1");
+						mysqli_stmt_bind_param($stmt, "ss",$fname,$id) or die("bind param1");
 						if(mysqli_stmt_execute($stmt)) {
                             echo "<h4>Successfully updated First Name.</h4>";
                         }	
@@ -144,7 +144,7 @@
                 }
 				if(isset($_POST['lname'])){
 					if ($stmt2 = mysqli_prepare($link, $sql3)) {
-						mysqli_stmt_bind_param($stmt2, "ss",$lname,$email) or die("bind param2");
+						mysqli_stmt_bind_param($stmt2, "ss",$lname,$id) or die("bind param2");
 						if(mysqli_stmt_execute($stmt2)) {
                             echo "<h4>Successfully updated Last Name.</h4>";
                         }	
@@ -157,7 +157,7 @@
                 }
 				if(isset($_POST['password'])){
 					if ($stmt4 = mysqli_prepare($link, $sql4)) {
-						mysqli_stmt_bind_param($stmt4, "ss",$password,$email) or die("bind param3");
+						mysqli_stmt_bind_param($stmt4, "ss",$password,$id) or die("bind param3");
 						if(mysqli_stmt_execute($stmt4)) {
                             echo "<h4>Successfully updated password.</h4>";
                         }	
@@ -170,7 +170,7 @@
                 }
 				if(isset($_POST['bio'])){
 					if ($stmt5 = mysqli_prepare($link, $sql5)) {
-						mysqli_stmt_bind_param($stmt5, "ss",$bio,$email) or die("bind param4");
+						mysqli_stmt_bind_param($stmt5, "ss",$bio,$id) or die("bind param4");
 						if(mysqli_stmt_execute($stmt5)) {
                             echo "<h4>Successfully updated Bio.</h4>";
                         }	
@@ -183,7 +183,7 @@
                 }
                 if(isset($_POST['industry'])){
 					if ($stmt6 = mysqli_prepare($link, $sql6)) {
-						mysqli_stmt_bind_param($stmt5, "ss",$industry,$email) or die("bind param5");
+						mysqli_stmt_bind_param($stmt5, "ss",$industry,$id) or die("bind param5");
 						if(mysqli_stmt_execute($stmt5)) {
                             echo "<h4>Successfully updated Industry.</h4>";
                         }	
@@ -196,7 +196,7 @@
                 }
                 if(isset($_POST['location'])){
 					if ($stmt7 = mysqli_prepare($link, $sql7)) {
-						mysqli_stmt_bind_param($stmt7, "ss",$location,$email) or die("bind param6");
+						mysqli_stmt_bind_param($stmt7, "ss",$location,$id) or die("bind param6");
 						if(mysqli_stmt_execute($stmt7)) {
                             echo "<h4>Successfully updated Location.</h4>";
                         }	
