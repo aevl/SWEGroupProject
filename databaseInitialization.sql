@@ -85,7 +85,7 @@ CREATE TABLE IF NOT EXISTS `experience` (
   `title` VARCHAR(45) NULL,
   `company` VARCHAR(45) NULL,
   `description` VARCHAR(45) NULL,
-  `user_id` VARCHAR(45) NOT NULL,
+  `user_id` INT NOT NULL,
   PRIMARY KEY (`id`),
   CONSTRAINT `fk_experience_user1`
     FOREIGN KEY (`user_id`)
@@ -107,7 +107,7 @@ CREATE TABLE IF NOT EXISTS `publication` (
   `date` DATETIME NULL,
   `description` VARCHAR(45) NULL,
   `authors` VARCHAR(45) NOT NULL,
-  `user_id` VARCHAR(45) NOT NULL,
+  `user_id` INT NOT NULL,
   PRIMARY KEY (`title`, `authors`, `user_id`),
   CONSTRAINT `fk_publication_user1`
     FOREIGN KEY (`user_id`)
@@ -129,7 +129,7 @@ CREATE TABLE IF NOT EXISTS `education` (
   `title` VARCHAR(45) NULL,
   `location` VARCHAR(45) NULL,
   `school` VARCHAR(45) NULL,
-  `user_id` VARCHAR(45) NOT NULL,
+  `user_id` INT NOT NULL,
   PRIMARY KEY (`type`),
   CONSTRAINT `fk_education_user1`
     FOREIGN KEY (`user_id`)
@@ -148,7 +148,7 @@ DROP TABLE IF EXISTS `skill` ;
 SHOW WARNINGS;
 CREATE TABLE IF NOT EXISTS `skill` (
   `name` VARCHAR(45) NOT NULL,
-  `user_id` VARCHAR(45) NOT NULL,
+  `user_id` INT NOT NULL,
   PRIMARY KEY (`name`),
   CONSTRAINT `fk_skill_user1`
     FOREIGN KEY (`user_id`)
@@ -167,7 +167,7 @@ DROP TABLE IF EXISTS `language` ;
 SHOW WARNINGS;
 CREATE TABLE IF NOT EXISTS `language` (
   `name` VARCHAR(45) NOT NULL,
-  `user_id` VARCHAR(45) NOT NULL,
+  `user_id` INT NOT NULL,
   PRIMARY KEY (`name`),
   CONSTRAINT `fk_language_user1`
     FOREIGN KEY (`user_id`)
@@ -190,7 +190,7 @@ CREATE TABLE IF NOT EXISTS `organization` (
   `title` VARCHAR(45) NULL,
   `date_start` DATETIME NULL,
   `date_end` DATETIME NULL,
-  `user_id` VARCHAR(45) NOT NULL,
+  `user_id` INT NOT NULL,
   PRIMARY KEY (`id`),
   CONSTRAINT `fk_organization_user1`
     FOREIGN KEY (`user_id`)
@@ -209,7 +209,7 @@ DROP TABLE IF EXISTS `business_has_user` ;
 SHOW WARNINGS;
 CREATE TABLE IF NOT EXISTS `business_has_user` (
   `business_id` INT NOT NULL,
-  `user_id` VARCHAR(45) NOT NULL,
+  `user_id` INT NOT NULL,
   PRIMARY KEY (`business_id`, `user_id`),
   CONSTRAINT `fk_business_has_user_Business1`
     FOREIGN KEY (`business_id`)
@@ -232,7 +232,7 @@ DROP TABLE IF EXISTS `user_has_message` ;
 
 SHOW WARNINGS;
 CREATE TABLE IF NOT EXISTS `user_has_message` (
-  `user_id` VARCHAR(25) NOT NULL,
+  `user_id` INT NOT NULL,
   `message_id` INT NOT NULL,
   PRIMARY KEY (`user_id`, `message_id`),
   CONSTRAINT `fk_user_has_message_user1`
