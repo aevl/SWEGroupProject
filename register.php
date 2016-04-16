@@ -31,7 +31,7 @@
 			</div>
 		   <div class="pull-right">
 		   	<ul class="nav navbar-nav">
-		   		<li><a href="sign-up.php"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+		   		<li><a href="register.php"><span class="glyphicon glyphicon-user"></span> Register</a></li>
         		<li><a href="login.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
            </div>
 		</nav>
