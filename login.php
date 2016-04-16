@@ -4,10 +4,6 @@
            $url = 'https://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
            header('Location: ' . $url);
 	}
-	if(!isset($_SESSION['id'])){
-		echo"You are not logged in, redirecting";
-		header('Location: http://pikachu-swacy.centralus.cloudapp.azure.com/login.php');
-	}
 ?>
 <html>
         <head>
@@ -80,9 +76,7 @@
         } else if(!empty($_POST['email'])) {
             echo 'Invalid password.';     
         }
-        
-        
-                    }
+       
             ?>
 
                 </div>
