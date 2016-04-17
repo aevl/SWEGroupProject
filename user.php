@@ -50,7 +50,7 @@
 <?php
 $i = $_SESSION['id'];
 $link = mysqli_connect("pikachu-swacy.centralus.cloudapp.azure.com", "general", "Thisistheultimatepassword1337", "mydb") or die ("Connection Error " . mysqli_error($link));
-$sql = "SELECT first_name, last_name, bio, industry, location, picture from User WHERE id = 'i'";
+$sql = "SELECT first_name, last_name, bio, industry, location, picture from user WHERE id = 'i'";
 $stmt = mysqli_query($link, $sql);
 $result= mysqli_fetch_assoc($stmt); 
 
