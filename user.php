@@ -1,6 +1,6 @@
 <?php
 	session_start();
-	if(!isset($_SESSION['email'])){
+	if(!isset($_SESSION['id'])){
 		echo"You are not logged in, redirecting";
 		header('Location: http://pikachu-swacy.centralus.cloudapp.azure.com/login.php');
 	}
@@ -48,9 +48,9 @@
 				<center><h1>Your Profile</h1></center>
 			</div>
 <?php
-$i = $_SESSION['email'];
+$i = $_SESSION['id'];
 $link = mysqli_connect("pikachu-swacy.centralus.cloudapp.azure.com", "general", "Thisistheultimatepassword1337", "mydb") or die ("Connection Error " . mysqli_error($link));
-$sql = "SELECT first_name, last_name, bio, industry, location, picture from User WHERE email = 'i'";
+$sql = "SELECT first_name, last_name, bio, industry, location, picture from User WHERE id = 'i'";
 $stmt = mysqli_query($link, $sql);
 $result= mysqli_fetch_assoc($stmt); 
 
@@ -66,7 +66,7 @@ echo "$last_name";
 echo "$bio";
 echo "$industry";
 echo "$location";
-<img src="<?echo $picture;?>">
+echo("<img src=\"$picture\" />");
 
 ?>
 </html>
