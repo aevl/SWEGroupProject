@@ -5,10 +5,6 @@
 		header('Location: http://pikachu-swacy.centralus.cloudapp.azure.com/login.php');
 	}
 	
-	if (!isset($_SERVER['HTTPS']) || !$_SERVER['HTTPS']) { // if request is not secure, redirect to secure url
-           $url = 'https://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
-           header('Location: ' . $url);
-	}
 	$link = mysqli_connect("pikachu-swacy.centralus.cloudapp.azure.com", "general", "Thisistheultimatepassword1337", "mydb") or die ("Connection Error " . mysqli_error($link));
 	$i = $_SESSION['id'];
 	$sql = "SELECT first_name, last_name, password, bio, picture, location, industry FROM user WHERE id = '$i'";        
