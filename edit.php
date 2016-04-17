@@ -87,7 +87,7 @@
 					<br>
                         <!--Industry-->
 				  	<div class="row form-group">
-				  		<label class="control-label col-md-2" for="bio">Bio:</label>
+				  		<label class="control-label col-md-2" for="industry">Bio:</label>
 				  		<div class="col-md-10">
 				  			<input type="text"class="form-control" id="industry" name="industry" placeholder="<?=$result['industry']?>">
 				  		</div>
@@ -95,7 +95,7 @@
 					<br>
                         <!--Location-->
 				  	<div class="row form-group">
-				  		<label class="control-label col-md-2" for="bio">Bio:</label>
+				  		<label class="control-label col-md-2" for="location">Bio:</label>
 				  		<div class="col-md-10">
 				  			<input type="text"class="form-control" id="location" name="location" placeholder="<?=$result['location']?>">
 				  		</div>
@@ -111,7 +111,7 @@
 
 
 <?php	
-		if(isset($_SESSION['id'])) { // Was the form submitted?
+		if(isset($_SESSION['id'])) {
 				
                 $fname = $_POST['fname'];
 		$lname = $_POST['lname'];
@@ -127,7 +127,7 @@
 		$sql4 = "UPDATE user SET password =? WHERE id =?";
 		$sql5 = "UPDATE user SET bio =? WHERE id =?";
                 $sql6 = "UPDATE user SET industry =? WHERE id =?";
-                $sql7 = "UPDATE user SET location =? where id =?";
+                $sql7 = "UPDATE user SET location =? WHERE id =?";
                                                
 				if(isset($_POST['fname'])){
 					if ($stmt = mysqli_prepare($link, $sql2)) {
