@@ -76,28 +76,28 @@
 				  	<div class="row form-group">
 				  		<label class="control-label col-md-2" for="fname">First Name:</label>
 				  		<div class="col-md-10">
-				  		<input type="text" class="form-control" id="fname" name="fname">
+				  		<input type="text" required class="form-control" id="fname" name="fname">
 				  		</div>
 				  	</div>
 				  <!--Lname-->
 				  	<div class="row form-group">
 				  		<label class="control-label col-md-2" for="lname">Last Name:</label>
 				  		<div class="col-md-10">
-				  			<input type="text" class="form-control" id="lname" name="lname">
+				  			<input type="text" required class="form-control" id="lname" name="lname">
 			  			</div>
 				  	</div>
                     <!--Email-->
 				  	<div class="row form-group">
 				  		<label class="control-label col-md-2" for="email">E-Mail:</label>
 				  		<div class="col-md-10">
-				  		<input type="email" class="form-control" id="email" name="email">
+				  		<input type="email" required class="form-control" id="email" name="email">
 				  		</div>
 				  	</div>
                     <!--Password-->
 					<div class="row form-group">
 						<label class="control-label col-md-2" for="pass">Password:</label>
 						<div class="col-md-10">
-						<input type="password" class="form-control" id="pass" name="pass">
+						<input type="password" required class="form-control" id="pass" name="pass">
 						</div>
 					</div>
                      <!-- Bio -->
@@ -118,7 +118,7 @@
 				  	<div class="row form-group">
 				  		<label class="control-label col-md-2" for="industry">Industry:</label>
 				  		<div class="col-md-2">
-				  			<input type="text" class="form-control" id="industry" name="industry">
+				  			<input type="text" required class="form-control" id="industry" name="industry">
 				  		</div>
 				  		<div class="col-md-8">
 				  		</div>
