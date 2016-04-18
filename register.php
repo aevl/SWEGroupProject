@@ -74,28 +74,28 @@
 				<form action="<?=$_SERVER['PHP_SELF']?>" role="form" method="POST"> <!-- formElement -->
 				  <!--Fname-->
 				  	<div class="row form-group">
-				  		<label class="control-label col-md-2" for="fname"><b>*</b> First Name:</label>
+				  		<label class="control-label col-md-2" for="fname">First Name:</label>
 				  		<div class="col-md-10">
 				  		<input type="text" class="form-control" id="fname" name="fname">
 				  		</div>
 				  	</div>
 				  <!--Lname-->
 				  	<div class="row form-group">
-				  		<label class="control-label col-md-2" for="lname"><b>*</b> Last Name:</label>
+				  		<label class="control-label col-md-2" for="lname">Last Name:</label>
 				  		<div class="col-md-10">
 				  			<input type="text" class="form-control" id="lname" name="lname">
 			  			</div>
 				  	</div>
                     <!--Email-->
 				  	<div class="row form-group">
-				  		<label class="control-label col-md-2" for="email"><b>*</b> E-Mail:</label>
+				  		<label class="control-label col-md-2" for="email">E-Mail:</label>
 				  		<div class="col-md-10">
 				  		<input type="email" class="form-control" id="email" name="email">
 				  		</div>
 				  	</div>
                     <!--Password-->
 					<div class="row form-group">
-						<label class="control-label col-md-2" for="pass"> <b>*</b> Password:</label>
+						<label class="control-label col-md-2" for="pass">Password:</label>
 						<div class="col-md-10">
 						<input type="password" class="form-control" id="pass" name="pass">
 						</div>
@@ -109,14 +109,14 @@
 					</div>
 				  <!--Location-->
 				  	<div class="row form-group">
-				  		<label class="control-label col-md-2" for="location"><b>*</b> Location:</label>
+				  		<label class="control-label col-md-2" for="location">Location:</label>
 				  		<div class="col-md-10">
 				  			<input type="text" class="form-control" id="location" name="location">
 				  		</div>
 				  	</div>
 				  <!--Industry-->
 				  	<div class="row form-group">
-				  		<label class="control-label col-md-2" for="industry">  Industry:</label>
+				  		<label class="control-label col-md-2" for="industry">Industry:</label>
 				  		<div class="col-md-2">
 				  			<input type="text" class="form-control" id="industry" name="industry">
 				  		</div>
