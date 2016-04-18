@@ -1,0 +1,71 @@
+/*header*/
+.header-user-home {
+	background-color: cornflowerblue;
+}
+
+/*home button in the header*/
+.header-homebutton {
+	color: #FFFFFF;
+	text-decoration: none;
+	display: inline;
+	font-size: xx-large;
+	padding-left: 20px;
+}
+
+.header-homebutton:hover {
+	color: #FFFFFF;
+	text-decoration: none;
+}
+
+.header-homebutton:visited {
+	color: #FFFFFF;
+}
+
+/*buttons belonging on the right of the header*/
+.header-rightbuttons {
+	float: right;
+	list-style-type: none;
+	padding-left: 0;
+	display: inline;
+	color: #FFFFFF;
+	font-size: x-large;
+	padding-right: 10px;
+}
+
+/*general header button styling*/
+.header-button-inline {
+	display: inline;
+	padding: 5px;
+}
+
+/*profile texts*/
+.profile-text {
+	 padding-top: 10px;
+}
+
+/*general styling*/
+.mycontainer-scrollable {
+	height: 200px;
+	overflow-y: auto;
+}
+
+.mycontainer-content {
+	padding-top: 15px;
+}
+
+button.inline {
+	display: inline;
+}
+
+button.right {
+	float: right;
+}
+
+h3 {
+	display: inline;
+}
+
+/*profile image*/
+.img-profile {
+	padding: 5px;
+}
