@@ -10,7 +10,7 @@ if($UploadedFileName!='')
                 {    
                     $QueryInsertFile="INSERT INTO user SET picture='$TargetPath'"; 
                     // Write Mysql Query Here to insert this $QueryInsertFile.
-                    $link = mysqli_connect("pikachu-swacy.centralus.cloudapp.azure.com", "general", "Thisistheultimatepassword1337", "mydb") or die ("Connection Error " . mysqli_error($link));
+                    $link = mysqli_connect("pikachu-swacy.centralus.cloudapp.azure.com", "pikachu", "Thisistheultimatepassword1337", "mydb") or die ("Connection Error " . mysqli_error($link));
                     if ($stmt = mysqli_prepare($link, $QueryInsertFile)) {
                         mysqli_stmt_bind_param($stmt, "s", $QueryInsertFile) or die ("photobind");
                         header('Location: /register.php');
