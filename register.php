@@ -57,13 +57,18 @@
 
 		if(mysqli_stmt_execute($stmt)) {
                       		  echo "<h4><b><center>Success</center></b></h4>";
+                      		  $sql2 = "SELECT id FROM user WHERE email ="." '".$email."' ";
+                      		  $stmt2 = mysqli_query($link,$sql2);
+                      		  $result = mysqli_fetch_assoc($stmt);
+                      		  $j = result['id'];
+                      		  $_SESSION['id']= $j; 
 				//this redirects to user.php - but still need to log in 
 				header('location: user.php');
                     } else {
                     	echo "<h4><b><center>Failed</center></b></h4>";
 						printf("<b><center>Error: %s</center></b>.\n", mysqli_stmt_error($stmt));
 					}
-                $result = mysqli_stmt_get_result($stmt);
+                
                 }
             } 
             else { ?>
