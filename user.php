@@ -1,6 +1,6 @@
 <?php
 	session_start();
-	if(!isset($_SESSION['email'])){
+	if(!isset($_SESSION['id'])){
 		echo"You are not logged in, redirecting";
 		header('Location: http://pikachu-swacy.centralus.cloudapp.azure.com/login.php');
 	}
