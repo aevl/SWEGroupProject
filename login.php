@@ -56,7 +56,7 @@
 <?php
     session_start();
     if(isset($_POST['submit'])) { // Was the form submitted?         
-        $link = mysqli_connect("pikachu-swacy.centralus.cloudapp.azure.com", "general", "Thisistheultimatepassword1337", "mydb") or die ("Connection Error " . mysqli_error($link));
+        $link = mysqli_connect("pikachu-swacy.centralus.cloudapp.azure.com", "pikachu", "Thisistheultimatepassword1337", "mydb") or die ("Connection Error " . mysqli_error($link));
         $i = $_POST['email'];                      	
         $sql = "SELECT  password, id FROM user WHERE email ="." '".$i."' ";
         $stmt = mysqli_query($link, $sql);
