@@ -116,7 +116,7 @@
 		$industry = $_POST['industry'];
                 $location = $_POST['location'];
 
-                $link = mysqli_connect("pikachu-swacy.centralus.cloudapp.azure.com", "pikachu", "Thisistheultimatepassword1337", "mydb") or die ("Connection Error " . mysqli_error($link));
+                $link = mysqli_connect("pikachu-swacy.centralus.cloudapp.azure.com", "general", "Thisistheultimatepassword1337", "mydb") or die ("Connection Error " . mysqli_error($link));
 				
                 $sql2 = "UPDATE user SET first_name =? WHERE id = ?";
 		$sql3 = "UPDATE user SET last_name =? WHERE id = ?";
