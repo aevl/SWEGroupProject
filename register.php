@@ -37,7 +37,7 @@
 		</nav>
 		<!--Sign-up Form-->
 <?php		if(isset($_POST['submit'])) { // Was the form submitted?
-        	$link = mysqli_connect("pikachu-swacy.centralus.cloudapp.azure.com", "pikachu", "Thisistheultimatepassword1337", "mydb") or die ("Connection Error " . mysqli_error($link));
+        	$link = mysqli_connect("localhost", "root", "Thisistheultimatepassword1337", "mydb") or die ("Connection Error " . mysqli_error($link));
                 $sql = "INSERT INTO user(first_name, last_name, email, password, bio, location, industry) VALUES(?,?,?,?,?,?,?)"; 
                 if ($stmt = mysqli_prepare($link, $sql)) {
                     $fname = $_POST['fname'];
