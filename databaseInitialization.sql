@@ -29,7 +29,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `picture` VARCHAR(45) NULL,
   `location` VARCHAR(45) NULL,
   `industry` VARCHAR(45) NULL,
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -42,7 +42,7 @@ DROP TABLE IF EXISTS `business` ;
 
 SHOW WARNINGS;
 CREATE TABLE IF NOT EXISTS `business` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `company_name` VARCHAR(45) NULL,
   `industry` VARCHAR(45) NULL,
   `email` VARCHAR(45) NULL,
@@ -62,7 +62,7 @@ DROP TABLE IF EXISTS `message` ;
 
 SHOW WARNINGS;
 CREATE TABLE IF NOT EXISTS `message` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `send_time_stamp` DATETIME NULL,
   `sender_id` VARCHAR(45) NULL,
   `receiver_id` VARCHAR(45) NULL,
@@ -79,7 +79,7 @@ DROP TABLE IF EXISTS `experience` ;
 
 SHOW WARNINGS;
 CREATE TABLE IF NOT EXISTS `experience` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `date_start` DATETIME NULL,
   `date_end` DATETIME NULL,
   `title` VARCHAR(45) NULL,
@@ -103,12 +103,13 @@ DROP TABLE IF EXISTS `publication` ;
 
 SHOW WARNINGS;
 CREATE TABLE IF NOT EXISTS `publication` (
+  `id` INT NOT NULL AUTO_INCREMENT,
   `title` VARCHAR(45) NOT NULL,
   `date` DATETIME NULL,
   `description` VARCHAR(45) NULL,
   `authors` VARCHAR(45) NOT NULL,
   `user_id` INT NOT NULL,
-  PRIMARY KEY (`title`, `authors`, `user_id`),
+  PRIMARY KEY (`id`),
   CONSTRAINT `fk_publication_user1`
     FOREIGN KEY (`user_id`)
     REFERENCES `user` (`id`)
@@ -125,12 +126,13 @@ DROP TABLE IF EXISTS `education` ;
 
 SHOW WARNINGS;
 CREATE TABLE IF NOT EXISTS `education` (
+  `id` INT NOT NULL AUTO_INCREMENT,
   `type` VARCHAR(45) NOT NULL,
   `title` VARCHAR(45) NULL,
   `location` VARCHAR(45) NULL,
   `school` VARCHAR(45) NULL,
   `user_id` INT NOT NULL,
-  PRIMARY KEY (`type`),
+  PRIMARY KEY (`id`),
   CONSTRAINT `fk_education_user1`
     FOREIGN KEY (`user_id`)
     REFERENCES `user` (`id`)
@@ -185,7 +187,7 @@ DROP TABLE IF EXISTS `organization` ;
 
 SHOW WARNINGS;
 CREATE TABLE IF NOT EXISTS `organization` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NULL,
   `title` VARCHAR(45) NULL,
   `date_start` DATETIME NULL,
