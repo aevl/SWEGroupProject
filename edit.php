@@ -5,7 +5,7 @@
 		header('Location: http://pikachu-swacy.centralus.cloudapp.azure.com/login.php');
 	}
 	
-	$link = mysqli_connect("pikachu-swacy.centralus.cloudapp.azure.com", "pikachu", "Thisistheultimatepassword1337", "mydb") or die ("Connection Error " . mysqli_error($link));
+	$link = mysqli_connect("localhost", "root", "Thisistheultimatepassword1337", "mydb") or die ("Connection Error " . mysqli_error($link));
 	$i = $_SESSION['id'];
 	$sql = "SELECT first_name, last_name, password, bio, picture, location, industry FROM user WHERE id = '$i'";        
 	$stmt = mysqli_query($link, $sql); 
