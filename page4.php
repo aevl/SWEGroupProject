@@ -1,4 +1,24 @@
 <?php
+session_start();
+$userId = $_SESSION["user_id"];
+if(is_null($userId))
+  $userId = 0;
+echo $userId;
+
+$conn = new mysqli("localhost", "root", "Thisistheultimatepassword1337");
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+} 
+
+$sql = "SELECT first_name, last_name, email, bio, picture, location, industry FROM user WHERE id = ".$userId." LIMIT 1";
+if($result = mysqli_query($conn, $sql)){
+	echo "here";
+	$row = mysqli_fetch_row($result);
+}
+echo $row[0];
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -91,4 +111,4 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   </body>
 </html>
-?>
+
