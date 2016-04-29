@@ -38,7 +38,7 @@
 		<!--Sign-up Form-->
 <?php		if(isset($_POST['submit'])) { // Was the form submitted?
         	$link = mysqli_connect("localhost", "root", "Thisistheultimatepassword1337", "mydb") or die ("Connection Error " . mysqli_error($link));
-                $sql = "INSERT INTO user(first_name, last_name, email, password, bio, location, industry) VALUES(?,?,?,?,?,?,?)"; 
+                $sql = "INSERT INTO user(first_name, last_name, email, password, bio, location, industry,salt) VALUES(?,?,?,?,?,?,?,?)"; 
                 if ($stmt = mysqli_prepare($link, $sql)) {
                     $fname = $_POST['fname'];
 					$lname = $_POST['lname'];
@@ -48,8 +48,8 @@
                 
                     $location = $_POST['location'];
                     $industry = $_POST['industry'];
-	                
-					$password = password_hash($_POST['pass'], PASSWORD_BCRYPT)  or die("bind param");
+	                		$salt = mt_rand();
+					$password = password_hash($salt.$_POST['pass'], PASSWORD_BCRYPT)  or die("bind param");
 					//echo "before bind";
                     mysqli_stmt_bind_param($stmt, "sssssss", $fname, $lname, $password, $email, $bio, $location, $industry) or die("bind param");
                     //echo "after bind";
