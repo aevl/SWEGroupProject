@@ -58,7 +58,7 @@
     if(isset($_POST['submit'])) { // Was the form submitted?         
         $link = mysqli_connect("localhost", "root", "Thisistheultimatepassword1337", "mydb") or die ("Connection Error " . mysqli_error($link));
         $i = $_POST['email'];                      	
-        $sql = "SELECT  password, id FROM user WHERE email ="." '".$i."' ";
+        $sql = "SELECT  salt, password, id FROM user WHERE email ="." '".$i."' ";
         $stmt = mysqli_query($link, $sql);
         if ($result = mysqli_fetch_assoc($stmt)){
             $hashed = $result['password'];
@@ -68,7 +68,7 @@
              echo 'Password is valid!'; 
                 $_SESSION['id'] = $j;
                 $_SESSION['email'] = $i;
-                header('Location: /user.php');
+                header('Location: /page4.php');
             }
         } else if(!empty($_POST['email'])) {
             echo 'Invalid password.';     
