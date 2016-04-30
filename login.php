@@ -13,7 +13,7 @@
         </head>
         <style type="text/css">
             	.form-control:focus{
-			border-color: ##0099ff;
+			border-color: #0099ff;
         		box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset, 0px 0px 8px rgb(0, 153, 255);
 		}
         </style>
