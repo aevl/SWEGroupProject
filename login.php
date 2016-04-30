@@ -13,14 +13,14 @@
         </head>
         <style type="text/css">
             	.form-control:focus{
-			border-color: #ff9900;
-        		box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset, 0px 0px 8px rgb(255, 153, 0);
+			border-color: ##0099ff;
+        		box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset, 0px 0px 8px rgb(0, 153, 255);
 		}
         </style>
         <body>
             <header>
             </header>
-            <nav class="w3-topnav w3-black">
+            <nav class="w3-topnav w3-blue">
             <div>
                 <ul class="nav navbar-nav">
                     <li><a href="index.php"><span class="glyphicon glyphicon-home"></span> Home</a></li>
@@ -45,7 +45,7 @@
                                                                 <input class='form-control' type="password" name="password" placeholder="Password">
                                                 </div>
                                                 <div class="row form-group">
-                                                                <input class=" btn btn-warning" type="submit" name="submit" value="Login"/>
+                                                                <input class=" btn btn-primary" type="submit" name="submit" value="Login"/>
                                                 </div>
                                         </form>
                                 </div>
