@@ -22,13 +22,13 @@
 	</head>
 	<style type="text/css">
 	.form-control:focus{
-			border-color: #ff9900;
-        		box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset, 0px 0px 8px rgb(255, 153, 0);
+			border-color: #0099ff;
+        		box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset, 0px 0px 8px rgb(0, 153, 255);
 		}
 	
 	</style>
 	<body>
-		<header class="w3-topnav w3-black">
+		<header class="w3-topnav w3-blue">
 			<p class="header"><center><?php $j = $_SESSION['email']; echo '<h1>' . "Welcome $j" . '</h1>';?></center></p>
 		</header>
 		
@@ -99,7 +99,7 @@
 					<br>
 				  <!--Submit-->
 				 	<div class="row form-group">
-				 		<button type="submit" class="btn btn-warning btn-block" name="submit">Submit</button>
+				 		<button type="submit" class="btn btn-primary btn-block" name="submit">Submit</button>
 				 	</div>
 				</form> <!-- end formElement -->
 			
