@@ -13,8 +13,8 @@
 	</head>
 	<style type="text/css">
 		.form-control:focus{
-			border-color: #ff9900;
-        		box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset, 0px 0px 8px rgb(255, 153, 0);
+			border-color: #0099ff;
+        		box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset, 0px 0px 8px rgb(0, 153, 255);
 		}
 	</style>
 	<body> <!--Body-->
@@ -23,7 +23,7 @@
 			<h1><center>Register</center></h1>
 		</header>
 		<!--Nav Bar-->
-		<nav class="w3-topnav w3-black">
+		<nav class="w3-topnav w3-blue">
 			<div>
 				<ul class="nav navbar-nav">
 					<li><a href="index.php"><span class="glyphicon glyphicon-home"></span> Home</a></li>
@@ -125,7 +125,7 @@
 					<br><br>
 				  <!--Submit-->
 				 	<div class="row form-group">
-				 		<button type="submit" class="btn btn-warning btn-block" name="submit">Create Account</button>
+				 		<button type="submit" class="btn btn-primary btn-block" name="submit">Create Account</button>
 				 	</div>
 				</form> <!-- end formElement -->
                 <!--Profile Photo-->    
