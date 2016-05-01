@@ -21,14 +21,15 @@ DROP TABLE IF EXISTS `user` ;
 
 SHOW WARNINGS;
 CREATE TABLE IF NOT EXISTS `user` (
-  `first_name` VARCHAR(255) NULL,
+  `first_name` VARCHAR(45) NULL,
   `last_name` VARCHAR(45) NULL,
   `email` VARCHAR(45) NOT NULL,
   `password` VARCHAR(45) NULL,
-  `bio` VARCHAR(45) NULL,
-  `picture` VARCHAR(45) NULL,
-  `location` VARCHAR(45) NULL,
+  `bio` varchar(255) NOT NULL,
+  `picture` blob NOT NULL,
+  `location` VARCHAR(255) NULL,
   `industry` VARCHAR(45) NULL,
+  `salt` varchar(45) NOT NULL
   `id` INT NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
@@ -48,8 +49,8 @@ CREATE TABLE IF NOT EXISTS `business` (
   `email` VARCHAR(45) NULL,
   `password` VARCHAR(45) NULL,
   `contact_email` VARCHAR(45) NULL,
-  `website` VARCHAR(45) NULL,
-  `description` VARCHAR(45) NULL,
+  `website` VARCHAR(255) NULL,
+  `description` VARCHAR(255) NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -66,7 +67,7 @@ CREATE TABLE IF NOT EXISTS `message` (
   `send_time_stamp` DATETIME NULL,
   `sender_id` VARCHAR(45) NULL,
   `receiver_id` VARCHAR(45) NULL,
-  `contents` VARCHAR(45) NULL,
+  `contents` VARCHAR(255) NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -84,7 +85,7 @@ CREATE TABLE IF NOT EXISTS `experience` (
   `date_end` DATETIME NULL,
   `title` VARCHAR(45) NULL,
   `company` VARCHAR(45) NULL,
-  `description` VARCHAR(45) NULL,
+  `description` VARCHAR(255) NULL,
   `user_id` INT NOT NULL,
   PRIMARY KEY (`id`),
   CONSTRAINT `fk_experience_user1`
@@ -106,7 +107,7 @@ CREATE TABLE IF NOT EXISTS `publication` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `title` VARCHAR(45) NOT NULL,
   `date` DATETIME NULL,
-  `description` VARCHAR(45) NULL,
+  `description` VARCHAR(255) NULL,
   `authors` VARCHAR(45) NOT NULL,
   `user_id` INT NOT NULL,
   PRIMARY KEY (`id`),
@@ -129,7 +130,7 @@ CREATE TABLE IF NOT EXISTS `education` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `type` VARCHAR(45) NOT NULL,
   `title` VARCHAR(45) NULL,
-  `location` VARCHAR(45) NULL,
+  `location` VARCHAR(255) NULL,
   `school` VARCHAR(45) NULL,
   `user_id` INT NOT NULL,
   PRIMARY KEY (`id`),
