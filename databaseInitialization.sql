@@ -29,7 +29,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `picture` blob NOT NULL,
   `location` VARCHAR(255) NULL,
   `industry` VARCHAR(45) NULL,
-  `salt` varchar(45) NOT NULL
+  `salt` varchar(45) NOT NULL,
   `id` INT NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
