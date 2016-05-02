@@ -26,7 +26,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `email` VARCHAR(45) NOT NULL,
   `password` VARCHAR(45) NULL,
   `bio` varchar(255) NOT NULL,
-  `picture` blob NOT NULL,
+  `picture` varchar(255) NOT NULL,
   `location` VARCHAR(255) NULL,
   `industry` VARCHAR(45) NULL,
   `salt` varchar(45) NOT NULL,
