@@ -13,14 +13,14 @@
         </head>
         <style type="text/css">
             	.form-control:focus{
-			border-color: #0099ff;
-        		box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset, 0px 0px 8px rgb(0, 153, 255);
+			border-color: #ff9900;
+        		box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset, 0px 0px 8px rgb(255, 153, 0);
 		}
         </style>
         <body>
             <header>
             </header>
-            <nav class="w3-topnav w3-blue">
+            <nav class="w3-topnav w3-black">
             <div>
                 <ul class="nav navbar-nav">
                     <li><a href="index.php"><span class="glyphicon glyphicon-home"></span> Home</a></li>
@@ -45,7 +45,7 @@
                                                                 <input class='form-control' type="password" name="password" placeholder="Password">
                                                 </div>
                                                 <div class="row form-group">
-                                                                <input class=" btn btn-primary" type="submit" name="submit" value="Login"/>
+                                                                <input class=" btn btn-warning" type="submit" name="submit" value="Login"/>
                                                 </div>
                                         </form>
                                 </div>
@@ -58,7 +58,7 @@
     if(isset($_POST['submit'])) { // Was the form submitted?         
         $link = mysqli_connect("localhost", "root", "Thisistheultimatepassword1337", "mydb") or die ("Connection Error " . mysqli_error($link));
         $i = $_POST['email'];                      	
-        $sql = "SELECT  salt, password, id FROM user WHERE email ="." '".$i."' ";
+        $sql = "SELECT  password, id FROM user WHERE email ="." '".$i."' ";
         $stmt = mysqli_query($link, $sql);
         if ($result = mysqli_fetch_assoc($stmt)){
             $hashed = $result['password'];
