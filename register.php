@@ -20,7 +20,7 @@
 	<body> <!--Body-->
 		<!--Header-->
 		<header>
-			<h1><center>Register</center></h1>
+
 		</header>
 		<!--Nav Bar-->
 		<nav class="w3-topnav w3-blue">
@@ -38,7 +38,7 @@
 		<!--Sign-up Form-->
 <?php		if(isset($_POST['submit'])) { // Was the form submitted?
         	$link = mysqli_connect("localhost", "root", "Thisistheultimatepassword1337", "mydb") or die ("Connection Error " . mysqli_error($link));
-                $sql = "INSERT INTO user(first_name, last_name, email, password, bio, location, industry,salt) VALUES(?,?,?,?,?,?,?,?)"; 
+                $sql = "INSERT INTO user(first_name, last_name, password, email, bio, location, industry, salt) VALUES(?,?,?,?,?,?,?,?)"; 
                 if ($stmt = mysqli_prepare($link, $sql)) {
                     $fname = $_POST['fname'];
 					$lname = $_POST['lname'];
@@ -51,14 +51,12 @@
 	                		$salt = mt_rand();
 					$password = password_hash($salt.$_POST['pass'], PASSWORD_BCRYPT)  or die("bind param");
 					//echo "before bind";
-                    mysqli_stmt_bind_param($stmt, "sssssss", $fname, $lname, $password, $email, $bio, $location, $industry) or die("bind param");
+                    mysqli_stmt_bind_param($stmt, "ssssssss", $fname, $lname, $password, $email, $bio, $location, $industry, $salt) or die("bind param");
                     //echo "after bind";
-
-
 		if(mysqli_stmt_execute($stmt)) {
                       		  echo "<h4><b><center>Success</center></b></h4>";
 				//this redirects to user.php - but still need to log in 
-				header('location: user.php');
+				header('location: page4.php');
                     } else {
                     	echo "<h4><b><center>Failed</center></b></h4>";
 						printf("<b><center>Error: %s</center></b>.\n", mysqli_stmt_error($stmt));
@@ -117,10 +115,12 @@
 				  <!--Industry-->
 				  	<div class="row form-group">
 				  		<label class="control-label col-md-2" for="industry">Industry:</label>
-				  		<div class="col-md-2">
+				  		<div class="col-md-10">
 				  			<input type="text" required class="form-control" id="industry" name="industry">
 				  		</div>
+						<br><br>
 				  		<div class="col-md-8">
+						<input type='file' name='UploadImage'>
 				  		</div>
 					<br><br>
 				  <!--Submit-->
@@ -129,7 +129,7 @@
 				 	</div>
 				</form> <!-- end formElement -->
                 <!--Profile Photo-->    
-                <form method='POST' action='UploadImage.php' enctype="multipart/form-data">
+                <!--<form method='POST' action='UploadImage.php' enctype="multipart/form-data">
                     <input type='file' name='UploadImage'>
                     <input type='submit' value="submit">
                 </form>    
@@ -145,4 +145,4 @@
 		<!--Credits & Links @ bottom-->
 			
 	</body>
-</html>
+</html> 
