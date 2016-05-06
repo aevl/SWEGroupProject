@@ -1,15 +1,15 @@
 <?php
 	session_start();
 	if(!isset($_SESSION['id'])){
-		echo"You are not logged in, redirecting";
-		header('Location: http://pikachu-swacy.centralus.cloudapp.azure.com/login.php');
-	}
+-		echo"You are not logged in, redirecting";
+-		header('Location: http://pikachu-swacy.centralus.cloudapp.azure.com/login.php');
+-	}
 	
 	$link = mysqli_connect("localhost", "root", "Thisistheultimatepassword1337", "mydb") or die ("Connection Error " . mysqli_error($link));
-	$i = $_SESSION['id'];
-	$sql = "SELECT first_name, last_name, password, bio, picture, location, industry FROM user WHERE id = '$i'";        
-	$stmt = mysqli_query($link, $sql); 
-	$result= mysqli_fetch_assoc($stmt);
+	$id = $_SESSION['id'];
+	$load = "SELECT first_name, last_name, bio, picture, location, industry FROM user WHERE id = '$id'";        
+	$loadstmt = mysqli_query($link, $load); 
+	$result= mysqli_fetch_assoc($loadstmt);
 
 ?>
 <html>
@@ -32,7 +32,7 @@
 			<p class="header"><center><?php $j = $_SESSION['email']; echo '<h1>' . "Welcome $j" . '</h1>';?></center></p>
 		</header>
 		
-		<nav class="w3-topnav w3-black">
+		<nav class="w3-topnav w3-blue">
 			<div>
 			<ul class="nav navbar-nav">
 				<li><a href="http://pikachu-swacy.centralus.cloudapp.azure.com/user.php"><span class="glyphicon glyphicon-user"></span> User Page </a></li></ul>
@@ -66,14 +66,7 @@
 			  			</div>
 
 				  	</div>
-				  <!--Password-->
-				  	<div class="row form-group">
-				  		<label class="control-label col-md-2" for="email">E-Mail:</label>
-				  		<div class="col-md-10">
-				  		<input type="password" class="form-control" id="password" name="password" placeholder="<?=$result['password']?>">
-				  		</div>
-				  	</div>
-				  <!--Bio-->
+				 	<!--Bio-->
 				  	<div class="row form-group">
 				  		<label class="control-label col-md-2" for="bio">Bio:</label>
 				  		<div class="col-md-10">
@@ -83,7 +76,7 @@
 					<br>
                         <!--Industry-->
 				  	<div class="row form-group">
-				  		<label class="control-label col-md-2" for="industry">Bio:</label>
+				  		<label class="control-label col-md-2" for="industry">Industry:</label>
 				  		<div class="col-md-10">
 				  			<input type="text"class="form-control" id="industry" name="industry" placeholder="<?=$result['industry']?>">
 				  		</div>
@@ -91,7 +84,7 @@
 					<br>
                         <!--Location-->
 				  	<div class="row form-group">
-				  		<label class="control-label col-md-2" for="location">Bio:</label>
+				  		<label class="control-label col-md-2" for="location">Location:</label>
 				  		<div class="col-md-10">
 				  			<input type="text"class="form-control" id="location" name="location" placeholder="<?=$result['location']?>">
 				  		</div>
@@ -108,24 +101,23 @@
 
 <?php	
 		if(isset($_SESSION['id'])) {
-				
+		//$id = $_SESSION['id'];		
                 $fname = $_POST['fname'];
-		$lname = $_POST['lname'];
-                $password = $_POST['password'];
+				$lname = $_POST['lname'];
                 $bio = $_POST['bio'];
-		$industry = $_POST['industry'];
+				$industry = $_POST['industry'];
                 $location = $_POST['location'];
 
-                $link = mysqli_connect("pikachu-swacy.centralus.cloudapp.azure.com", "general", "Thisistheultimatepassword1337", "mydb") or die ("Connection Error " . mysqli_error($link));
+                $link = mysqli_connect("localhost", "root", "Thisistheultimatepassword1337", "mydb") or die ("Connection Error " . mysqli_error($link));
 				
-                $sql2 = "UPDATE user SET first_name =? WHERE id = ?";
-		$sql3 = "UPDATE user SET last_name =? WHERE id = ?";
-		$sql4 = "UPDATE user SET password =? WHERE id =?";
+                $sql2 = "UPDATE user SET first_name =? WHERE id =?";
+		$sql3 = "UPDATE user SET last_name =? WHERE id =?";
+				
 		$sql5 = "UPDATE user SET bio =? WHERE id =?";
                 $sql6 = "UPDATE user SET industry =? WHERE id =?";
                 $sql7 = "UPDATE user SET location =? WHERE id =?";
                                                
-				if(isset($_POST['fname'])){
+				if(!empty($_POST['fname'])){
 					if ($stmt = mysqli_prepare($link, $sql2)) {
 						mysqli_stmt_bind_param($stmt, "ss",$fname,$id) or die("bind param1");
 						if(mysqli_stmt_execute($stmt)) {
@@ -138,7 +130,7 @@
 					}								
                                                 
                 }
-				if(isset($_POST['lname'])){
+				if(!empty($_POST['lname'])){
 					if ($stmt2 = mysqli_prepare($link, $sql3)) {
 						mysqli_stmt_bind_param($stmt2, "ss",$lname,$id) or die("bind param2");
 						if(mysqli_stmt_execute($stmt2)) {
@@ -151,20 +143,7 @@
 					}								
                                                 
                 }
-				if(isset($_POST['password'])){
-					if ($stmt4 = mysqli_prepare($link, $sql4)) {
-						mysqli_stmt_bind_param($stmt4, "ss",$password,$id) or die("bind param3");
-						if(mysqli_stmt_execute($stmt4)) {
-                            echo "<h4>Successfully updated password.</h4>";
-                        }	
-						else {
-                             echo "<h4>Failed</h4>";
-						}
-						
-					}								
-                                                
-                }
-				if(isset($_POST['bio'])){
+				if(!empty($_POST['bio'])){
 					if ($stmt5 = mysqli_prepare($link, $sql5)) {
 						mysqli_stmt_bind_param($stmt5, "ss",$bio,$id) or die("bind param4");
 						if(mysqli_stmt_execute($stmt5)) {
@@ -177,10 +156,10 @@
 					}								
                                                 
                 }
-                if(isset($_POST['industry'])){
+                if(!empty($_POST['industry'])){
 					if ($stmt6 = mysqli_prepare($link, $sql6)) {
-						mysqli_stmt_bind_param($stmt5, "ss",$industry,$id) or die("bind param5");
-						if(mysqli_stmt_execute($stmt5)) {
+						mysqli_stmt_bind_param($stmt6, "ss",$industry,$id) or die("bind param5");
+						if(mysqli_stmt_execute($stmt6)) {
                             echo "<h4>Successfully updated Industry.</h4>";
                         }	
 						else {
@@ -190,7 +169,7 @@
 					}								
                                                 
                 }
-                if(isset($_POST['location'])){
+                if(!empty($_POST['location'])){
 					if ($stmt7 = mysqli_prepare($link, $sql7)) {
 						mysqli_stmt_bind_param($stmt7, "ss",$location,$id) or die("bind param6");
 						if(mysqli_stmt_execute($stmt7)) {
