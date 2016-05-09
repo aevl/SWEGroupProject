@@ -55,7 +55,15 @@
                     //echo "after bind";
 		if(mysqli_stmt_execute($stmt)) {
                       		  echo "<h4><b><center>Success</center></b></h4>";
-				//this redirects to user.php - but still need to log in 
+				//this redirects to user.php - but still need to log in
+				 $idsql = "SELECT id FROM user WHERE email ='$email'";
+				if($stmt2 = mysqli_query($link, $idsql)){
+					while($idresult = mysqli_fetch_assoc($stmt2)){
+					$_SESSION['user_id'] = $idresult['id'];
+					}
+				
+				}
+ 				
 				header('location: page4.php');
                     } else {
                     	echo "<h4><b><center>Failed</center></b></h4>";
